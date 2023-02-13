@@ -3,15 +3,16 @@ import { Stack, Text, Image } from "@chakra-ui/react";
 import faceIcon from "../images/face.svg";
 import arrowIcon from "../images/arrow.svg";
 
-function LeftPanel() {
+function LeftPanel({changePanel}) {
+
     return (
         <>
           <Stack mt="5%" mb="20%">
             <img
-              src={faceIcon}
-              width="200px"
-              height="200px"
-              alt="user-Icon" />
+            src={faceIcon}
+            width="200px"
+            height="200px"
+            alt="user-Icon" />
           </Stack>
           <Text
             fontSize="3xl"
@@ -30,14 +31,15 @@ function LeftPanel() {
           </Text>
           <Stack pt={{ base: "8%", md: "15%"}}>
             <Image
-              src={arrowIcon}
-              width="50px"
-              height="50px"
-              alt="arrow-Icon"
-              borderRadius="full"
-              backgroundColor="gray.700"
-              cursor="pointer"
-              p={3}
+            src={arrowIcon}
+            onClick={()=> changePanel()}
+            width="50px"          
+            height="50px"         
+            alt="arrow-Icon"           
+            borderRadius="full"          
+            backgroundColor="#373d40"         
+            cursor="pointer"            
+            p={3}
             />
         </Stack>
         </>

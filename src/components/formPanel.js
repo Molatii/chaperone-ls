@@ -1,14 +1,16 @@
 import React from "react";
-import { Box, FormControl, Image, HStack, Text, Stack, FormLabel, Input, Button } from "@chakra-ui/react";
+import { Box, FormControl, Image, HStack, Text, Stack, FormLabel, Input, InputRightElement, InputGroup } from "@chakra-ui/react";
 import femaleIcon from "../images/venus-symbol.svg";
 import maleIcon from "../images/mars-symbol.svg";
 import cardIcon from "../images/card.svg";
 import cardWhiteIcon from "../images/card--white.svg";
+import calendarIcon from "../images/calendar.svg";
+import FormButton from "./formBtn";
 
 function FormPanel() {
     return (
         <Box mt="-3%">
-            <from>
+            <form>
                 <FormControl w="100%" mb="3%" display={{ base: "block", md: "inline-flex"}}>
                     <FormLabel w="30%" color="gray.600" mt={2}>
                         Name
@@ -37,7 +39,7 @@ function FormPanel() {
                             width={10} 
                             height={9}
                             />
-                            <Text fontSize="sm" color="gray.400" pl={3} pt={2}>Male</Text>
+                            <Text fontSize="sm" color="#cad7dd" pl={3} pt={2}>Male</Text>
                         </Stack>
                         <Stack direction="row">
                         <Image
@@ -48,7 +50,7 @@ function FormPanel() {
                             width={10}
                             height={9}
                         />
-                            <Text fontSize="sm" color="gray.400" pl={3} pt={2}>Female</Text>
+                            <Text fontSize="sm" color="#cad7dd" pl={3} pt={2}>Female</Text>
                         </Stack>
                     </Stack> 
                 </FormControl>
@@ -56,7 +58,7 @@ function FormPanel() {
                     <FormLabel w="30%" color="gray.600"  mt={2}>
                         Date Of Birth
                     </FormLabel>
-                    <Input
+                    <InputGroup
                         border="none"
                         bg="gray.50"
                         type='text'
@@ -64,7 +66,18 @@ function FormPanel() {
                         w={{ base: "100%", md: "70%" }}
                         justifySelf="end"
                         placeholder="02/11/2023"
-                    /> 
+                    
+                    >   <Input
+                            bg="gray.50"
+                            border="none"
+                            placeholder="02/11/2023"
+                            type='text'
+                        />
+                        <InputRightElement>
+                            <Image src={calendarIcon} alt="calendar_icon" />
+                        </InputRightElement>
+                        </InputGroup>
+
                 </FormControl>
                     <FormControl mb="3%" display={{ base: "block", md: "inline-flex"}}>
                      <FormLabel  w="30%" color="gray.600"  mt={2}>
@@ -108,7 +121,7 @@ function FormPanel() {
                         placeholder="5490-Vc828-9877"
                     /> 
                 </FormControl>
-                <FormControl mt="4%" mb="15%" display={{ base: "block", md: "inline-flex"}}>
+                <FormControl mt="4%" mb="12%" display={{ base: "block", md: "inline-flex"}}>
                    <FormLabel  w="30%" color="gray.600" mt={2}>
                         Membership
                     </FormLabel>
@@ -117,12 +130,19 @@ function FormPanel() {
                         <Image
                             src={cardWhiteIcon}
                             rounded="full"
-                            bg="gray.400"
+                            bg="#cad7dd"
                             p={2}
                             width={10} 
                             height={10}
                             />
-                            <Text fontSize="sm" color="gray.400" pl={{ base: "4%", md: "8%" }} pt={2}>Classic</Text>
+                            <Text
+                                fontSize="sm"
+                                color="#cad7dd"
+                                pl={{ base: "4%", md: "8%" }}
+                                pt={2}
+                            >
+                                Classic
+                            </Text>
                         </Stack>
                         <Stack direction="row" mr={{ base: "4%", md: "8%" }}>
                         <Image
@@ -133,7 +153,13 @@ function FormPanel() {
                             width={10} 
                             height={10}
                             />
-                            <Text fontSize="sm" color="gray.400" pl={{ base: "4%", md: "8%" }} pt={2}>Silver</Text>
+                            <Text
+                                fontSize="sm" color="#cad7dd"
+                                pl={{ base: "4%", md: "8%" }}
+                                pt={2}
+                            >
+                                Silver
+                            </Text>
                         </Stack>
                         <Stack direction="row">
                         <Image
@@ -144,15 +170,25 @@ function FormPanel() {
                             width={10}
                             height={10}
                         />
-                        <Text fontSize="sm" color="gray.400" pl={{ base: "4%", md: "8%" }} pt={2}>Gold</Text>
+                            <Text
+                                fontSize="sm"
+                                color="#cad7dd"
+                                pl={{ base: "4%", md: "8%" }}
+                                pt={2}
+                            >
+                                Gold
+                            </Text>
                         </Stack>  
                     </HStack>
                 </FormControl>
-                <Stack>
-                    <Button>CHANCEL</Button>
-                    <Button>SAVE</Button>
+                <Stack
+                    justifyContent={{ base: "contents", md: "flex-end" }}
+                    direction={{ base: "column", md: "row" }}
+                >
+                    <FormButton name="CHANCEL" bg="#f5f8f9" color="#37d40" />
+                    <FormButton name="SAVE" bg="#49c8a8" color="white" />
                 </Stack>
-            </from>
+            </form>
         </Box>
     )
 }
