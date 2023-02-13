@@ -25,6 +25,7 @@ function App() {
           p={{ base: "20", md: "20" }}
           pl={{ base: "5", md: "40" }}
           pr={{ base: "5", md: "40" }}
+          bg={{ base: "blackAlpha.900", md: "white" }}
           w={{ base: "100%", md: "65%" }}>
            <FormPanel />
         </Stack>
