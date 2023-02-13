@@ -1,7 +1,6 @@
 import React from "react";
 import
 {
-    Box,
     FormControl,
     Image,
     HStack,
@@ -19,12 +18,18 @@ import maleIcon from "../images/mars-symbol.svg";
 import cardIcon from "../images/card.svg";
 import cardWhiteIcon from "../images/card--white.svg";
 import calendarIcon from "../images/calendar.svg";
+import { motion } from "framer-motion";
 
 function FormPanel() {
      const { register, handleSubmit, reset } = useForm();
      const onSubmit = data => console.log(data);
     return (
-        <Box mt="-3%">
+        <motion.div
+            mt="-3%"
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            exit={{ x: window.innerWidth, transition:{ duration: 0.5 } }}
+        >
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormControl w="100%" mb="3%" display={{ base: "block", md: "inline-flex"}}>
                     <FormLabel w="30%" color="gray.600" mt={2}>
@@ -232,7 +237,7 @@ function FormPanel() {
                     </Button>
                 </Stack>
             </form>
-        </Box>
+        </motion.div>
     )
 }
 

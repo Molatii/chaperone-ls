@@ -1,8 +1,13 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 function ContentPanel() { 
     return (
-      <Box>
+        <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+        >
             <Heading
                 fontFamily="sans-serif"
                 color="#373d40"
@@ -33,7 +38,7 @@ function ContentPanel() {
                 first letter of the second word in a hyphenated compound word.
             </Text>
             
-      </Box>
+      </motion.div>
     ); 
   }
   export default ContentPanel;

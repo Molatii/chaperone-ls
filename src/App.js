@@ -4,6 +4,7 @@ import FormPanel from "./components/formPanel";
 import LeftPanel from "./components/leftPanel";
 import ContentPanel from "./components/contentPanel";
 import { animateScroll as scroll } from "react-scroll";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const [showContent, setShowContent] = useState(true);
@@ -12,7 +13,7 @@ function App() {
   const panel = () => {
     scroll.scrollTo(705);
   };
-  
+
   function changePanel(){
     setShowContent(!showContent);
     panel();
@@ -45,14 +46,16 @@ function App() {
               "white" : "#ff9200"
           }}
           w={{ base: "100%", md: "65%" }}
-        >         
+        > 
+        <AnimatePresence> 
           {
             showContent ? (
                <FormPanel/>
             ) : (
                 <ContentPanel />
             )
-          }         
+            }  
+          </AnimatePresence>  
         </Stack>
       </Stack>
     </Box>
