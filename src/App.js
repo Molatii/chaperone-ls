@@ -3,11 +3,19 @@ import { Box, Stack, VStack } from "@chakra-ui/react";
 import FormPanel from "./components/formPanel";
 import LeftPanel from "./components/leftPanel";
 import ContentPanel from "./components/contentPanel";
+import { animateScroll as scroll } from "react-scroll";
 
 function App() {
   const [showContent, setShowContent] = useState(true);
+
+  // Scroll to Panel
+  const panel = () => {
+    scroll.scrollTo(705);
+  };
+
   function changePanel(){
     setShowContent(!showContent);
+    panel();
   }
  
   return (
