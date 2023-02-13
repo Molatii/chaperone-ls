@@ -1,21 +1,37 @@
 import React from "react";
-import { Box, FormControl, Image, HStack, Text, Stack, FormLabel, Input, InputRightElement, InputGroup } from "@chakra-ui/react";
+import
+{
+    Box,
+    FormControl,
+    Image,
+    HStack,
+    Text,
+    Stack,
+    FormLabel,
+    Button,
+    Input,
+    InputRightElement,
+    InputGroup
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 import femaleIcon from "../images/venus-symbol.svg";
 import maleIcon from "../images/mars-symbol.svg";
 import cardIcon from "../images/card.svg";
 import cardWhiteIcon from "../images/card--white.svg";
 import calendarIcon from "../images/calendar.svg";
-import FormButton from "./formBtn";
 
 function FormPanel() {
+     const { register, handleSubmit, reset } = useForm();
+     const onSubmit = data => console.log(data);
     return (
         <Box mt="-3%">
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <FormControl w="100%" mb="3%" display={{ base: "block", md: "inline-flex"}}>
                     <FormLabel w="30%" color="gray.600" mt={2}>
                         Name
                     </FormLabel>
                     <Input
+                        id="name"
                         border="none"
                         bg="gray.50"
                         type='text'
@@ -23,6 +39,7 @@ function FormPanel() {
                         justifySelf="flex-end"
                         w={{ base: "100%", md: "70%"}}
                         placeholder="Paballo Molati"
+                        {...register("name")}
                     /> 
                 </FormControl>
                 <FormControl w="100%" mb="3%" display={{ base: "block", md: "inline-flex"}}>
@@ -65,13 +82,15 @@ function FormPanel() {
                         size="md"
                         w={{ base: "100%", md: "70%" }}
                         justifySelf="end"
-                        placeholder="02/11/2023"
+                        placeholder="02/11/2023"                    
                     
                     >   <Input
+                            id="DOB"
                             bg="gray.50"
                             border="none"
                             placeholder="02/11/2023"
                             type='text'
+                             {...register("DOB")}
                         />
                         <InputRightElement>
                             <Image src={calendarIcon} alt="calendar_icon" />
@@ -84,13 +103,15 @@ function FormPanel() {
                         Email
                     </FormLabel>
                     <Input
+                        id="email"
                         border="none"
                         bg="gray.50"
-                        type='text'
+                        type='email'
                         size="md"
                         w={{ base: "100%", md: "70%"}}
                         justifySelf="end"
                         placeholder="molatipaballo@gmail.com"
+                         {...register("email")}
                     /> 
                 </FormControl>
                 <FormControl mb="3%" display={{ base: "block", md: "inline-flex"}}>
@@ -98,6 +119,7 @@ function FormPanel() {
                         Mobile
                     </FormLabel>
                     <Input
+                        id="phone"
                         border="none"
                         bg="gray.50"
                         type='text'
@@ -105,6 +127,7 @@ function FormPanel() {
                         w={{ base: "100%", md: "70%"}}
                         justifySelf="end"
                         placeholder="+266 59911982"
+                         {...register("phone")}
                     /> 
                 </FormControl>
                 <FormControl mb="3%" display={{ base: "block", md: "inline-flex"}}>
@@ -112,6 +135,7 @@ function FormPanel() {
                         Customer ID
                     </FormLabel>
                     <Input
+                        id="id"
                         border="none"
                         bg="gray.50"
                         type='text'
@@ -119,6 +143,7 @@ function FormPanel() {
                         w={{ base: "100%", md: "70%"}}
                         justifySelf="end"
                         placeholder="5490-Vc828-9877"
+                         {...register("id")}
                     /> 
                 </FormControl>
                 <FormControl mt="4%" mb="12%" display={{ base: "block", md: "inline-flex"}}>
@@ -185,8 +210,26 @@ function FormPanel() {
                     justifyContent={{ base: "contents", md: "flex-end" }}
                     direction={{ base: "column", md: "row" }}
                 >
-                    <FormButton name="CHANCEL" bg="#f5f8f9" color="#37d40" />
-                    <FormButton name="SAVE" bg="#49c8a8" color="white" />
+                    <Button
+                        color="#37d40"   
+                        bg="#f5f8f9"
+                        width={{ base: "full", md: "135px" }}                        
+                        onClick={() => reset()}
+                    >
+                         <Text fontSize={"xs"}>
+                           CHANCEL                            
+                        </Text>                        
+                    </Button>
+                     <Button
+                        bg="#49c8a8"
+                        color="white"
+                        type="submit"
+                        width={{ base: "full", md: "135px" }}                                             
+                    >
+                         <Text fontSize={"xs"}>
+                           SAVE                            
+                        </Text>                        
+                    </Button>
                 </Stack>
             </form>
         </Box>
